@@ -28,7 +28,7 @@ const requestHandler = (req, res) => {
 
     req.on("end", () => {
       const parsedBody = Buffer.concat(body).toString(); // Combine all chunks and convert to string
-      const username = parsedBody.split("=")[1]; // Extract the value of 'username' from 'username=VALUE'
+      const username = parsedBody.split("=")[0]; // Extract the value of 'username' from 'username=VALUE'
       console.log("Username:", username); // Log the parsed username to the console
       res.writeHead(302, { Location: "/" }); // Redirect to home page
       return res.end();
